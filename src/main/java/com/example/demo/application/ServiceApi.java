@@ -16,13 +16,16 @@ import java.io.IOException;
 public class ServiceApi {
 
     @RequestMapping(method = RequestMethod.POST, value = "/")
-    public void index(@RequestPart MultipartFile sourceFile) throws IOException {
+    public String index(@RequestPart MultipartFile sourceFile) throws IOException {
         String sourceFileName = sourceFile.getOriginalFilename();
         String sourceFileNameExtension = FilenameUtils.getExtension(sourceFileName).toLowerCase();
 
         File destinationFile;
         String destinationFileName;
 
-        
+        log.info("-----------{}", sourceFileName);
+        log.info("-----------{}", sourceFileNameExtension);
+
+        return "file";
     }
 }
