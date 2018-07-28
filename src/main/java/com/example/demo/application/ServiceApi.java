@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.BufferedOutputStream;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 
 @Slf4j
@@ -20,11 +22,12 @@ public class ServiceApi {
         String sourceFileName = sourceFile.getOriginalFilename();
         String sourceFileNameExtension = FilenameUtils.getExtension(sourceFileName).toLowerCase();
 
-        File destinationFile;
-        String destinationFileName;
+        File convertFile = new File("/Users/arthur/Downloads"+sourceFile.getOriginalFilename());
+        byte[] bytes = sourceFile.getBytes();
+        BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(new FileOutputStream(convertFile));
 
-        log.info("-----------{}", sourceFileName);
-        log.info("-----------{}", sourceFileNameExtension);
+        bufferedOutputStream.write(bytes);
+        bufferedOutputStream.close();
 
         return "file";
     }
