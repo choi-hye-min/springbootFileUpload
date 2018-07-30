@@ -22,7 +22,7 @@ public class ServiceApi {
         String sourceFileName = sourceFile.getOriginalFilename();
         String sourceFileNameExtension = FilenameUtils.getExtension(sourceFileName).toLowerCase();
 
-        File convertFile = new File("/Users/arthur/Downloads"+sourceFile.getOriginalFilename());
+        File convertFile = new File("/Users/arthur/Downloads/"+sourceFile.getOriginalFilename());
         byte[] bytes = sourceFile.getBytes();
         BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(new FileOutputStream(convertFile));
 
